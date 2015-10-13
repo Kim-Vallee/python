@@ -18,4 +18,10 @@ chaine.lower() #met en minuscule
 chaine.capitalize() #Met la première lettre en majuscule
 chaine.center(50).encode() #Met au milieu avec 50 la taille finale qu'on souhaite obtenir
                            #On peut aussi voir que l'on peut ajouter deux methodes à la suite
-p(chaine.len)
+# ---------------- La méthode format -----------------------------------
+zero = '.'
+un = 26
+formation = "ceci est un texte{0} Il se compose de exactement {1} lettres".format(zero, un) #Qq explications:
+                        #Si tu te souviens pas, la methode format permet que lorsque Python exécute cette méthode,
+                        #il remplace dans notre chaîne {0} par la première variable passée à la méthode format
+                        #, {1} par la deuxième variable… et ainsi de suite.
