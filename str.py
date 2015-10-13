@@ -12,7 +12,7 @@ type(chaine)   #Donne <class 'str'>
     # un objet est issu d'une classe <---- IMPORTANT*
     # La classe est une forme de type de donnée, sauf qu'elle permet de définir des fonctions et variables propres au type
     #Les objets, que j'ai présentés comme des variables, pouvant contenir d'autres variables ou fonctions (que l'on appelle méthodes).
-    # On appelle une méthode d'un objet grâce à objet.methode()
+    # On appelle une méthode d'un objet grâce à objet.methode() 
 # ---------------- Exemples de modules pour str ------------------------
 chaine.lower() #met en minuscule
 chaine.capitalize() #Met la première lettre en majuscule
