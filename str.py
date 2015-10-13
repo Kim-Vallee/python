@@ -12,7 +12,7 @@ type(chaine)   #Donne <class 'str'>
     # un objet est issu d'une classe <---- IMPORTANT*
     # La classe est une forme de type de donnée, sauf qu'elle permet de définir des fonctions et variables propres au type
     #Les objets, que j'ai présentés comme des variables, pouvant contenir d'autres variables ou fonctions (que l'on appelle méthodes).
-    # On appelle une méthode d'un objet grâce à objet.methode() 
+    # On appelle une méthode d'un objet grâce à objet.methode()
 # ---------------- Exemples de modules pour str ------------------------
 chaine.lower() #met en minuscule
 chaine.capitalize() #Met la première lettre en majuscule
@@ -25,3 +25,10 @@ formation = "ceci est un texte{0} Il se compose de exactement {1} lettres".forma
                         #Si tu te souviens pas, la methode format permet que lorsque Python exécute cette méthode,
                         #il remplace dans notre chaîne {0} par la première variable passée à la méthode format
                         #, {1} par la deuxième variable… et ainsi de suite.
+                        # On pourrait aussi faire:
+#formation = "ceci est un texte{} Il se compose de exactement {} lettres".format(zero, un)
+formation2 ="""
+  {no_rue}, {nom_rue}
+  {code_postal} {nom_ville} ({pays})"""
+  .format(no_rue=5, nom_rue="rue des Postes", code_postal=75003, nom_ville="Paris", pays="France")# Ici on remplace les nomres
+        #Par des chaînes de caractères = autre possibilité mais obligé de nommer les variables avec le bon nom
