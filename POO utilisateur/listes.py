@@ -1,7 +1,7 @@
 #!/usr/bin/python3.4
 
 def p(*args):
-    print(args)
+    print(*args)
 
 
 liste = list() #On déclare la liste
