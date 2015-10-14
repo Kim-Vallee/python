@@ -10,4 +10,5 @@ def afficher_flottant(flottant):
     # La partie entière n'est pas à modifier
     # Seule la partie flottante doit être tronquée
     print(",".join([partie_entiere, partie_flottante[:3]]))
-afficher_flottant(1.555854781)
+if __name__ == "__main__":
+    afficher_flottant(1.555854781)

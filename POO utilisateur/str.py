@@ -55,6 +55,18 @@ while i < len(chaine2):
 
 # ------------------ Sélectionner une partie de la chaîne ------------------
 
+mot = "coucou"
+try:
+    mot[0] = "k" #Ne marche pas car on ne peut pas remplacer c par k de cette manière
+except:
+    print("En effet ça ne marche pas, on obtient un TypeError") #On affiche l'erreur
+    pass #On continue tout de même l'execution
+
 presentation = "hello :3"
 presentation[0:2] # On sélectionne les 2 premières lettres (le 0 est inclu mais le 2 est exclu)
+presentation[:2] # On fait pareil mais plus compact (ne marche que si on part de 0)
 presentation[2:len(presentation)] #On sélectionne la 3ème lettre jusqu'a la fin (Ici 2 n'est pas exclu)
+presentation[2:] # Pareil que la ligne 60 mais pour aller tout à la fin
+
+# Grâce aux indices nous pouvons maintenant changer la première lettre de la variable mot:
+mot = "k" + mot[1:] # Et la ça marche
