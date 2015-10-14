@@ -28,7 +28,13 @@ formation = "ceci est un texte{0} Il se compose de exactement {1} lettres".forma
                         # On pourrait aussi faire:
 #formation = "ceci est un texte{} Il se compose de exactement {} lettres".format(zero, un)
 formation2 ="""
-  {no_rue}, {nom_rue}
-  {code_postal} {nom_ville} ({pays})"""
-  .format(no_rue=5, nom_rue="rue des Postes", code_postal=75003, nom_ville="Paris", pays="France")# Ici on remplace les nomres
+ {no_rue}, {nom_rue}
+    {code_postal} {nom_ville} ({pays})""".format(no_rue=5, nom_rue="rue des Postes", code_postal=75003, nom_ville="Paris", pays="France")
+        # Ici on remplace les nombres
         #Par des chaînes de caractères = autre possibilité mais obligé de nommer les variables avec le bon nom
+
+
+
+age = 20
+part1 = 'J\'ai actuellement'
+final = part1 + str(age) + 'ans!' #On peut additionner des châines cependant les classes 'int' doivent être converties grâce à str(nombre)
