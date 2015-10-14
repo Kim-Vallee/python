@@ -57,4 +57,4 @@ while i < len(chaine2):
 
 presentation = "hello :3"
 presentation[0:2] # On sélectionne les 2 premières lettres (le 0 est inclu mais le 2 est exclu)
-presentation[2:len(presentation)] #On sélectionne la 3ème lettre jusqu'a la fin 
+presentation[2:len(presentation)] #On sélectionne la 3ème lettre jusqu'a la fin (Ici 2 n'est pas exclu)
