@@ -1,7 +1,7 @@
 #!/usr/bin/python3.4
 
 def p(*args):
-    print(args)
+    print(*args)
 
 chaine = 'coucou mon frère'
 chaine.upper() #Va mettre la chaîne en majuscule grâce
@@ -38,3 +38,23 @@ formation2 ="""
 age = 20
 part1 = 'J\'ai actuellement'
 final = part1 + str(age) + 'ans!' #On peut additionner des châines cependant les classes 'int' doivent être converties grâce à str(nombre)
+final == 'J\ai actuellement 20 ans!' #La chaîne complète donne ça
+final[0] #Donne la première lettre de final
+final[-1] #Donne la dernière lettre (de droite à gauche)
+len(final) #Donne la longueur de la chaine en caractères (Attention les espaces et tout comptent!
+
+
+
+# ------------------ Parcourir une chaîne grâce à while/for ---------------
+
+chaine2 = "Salut"
+i = 0 # On appelle l'indice 'i' par convention
+while i < len(chaine2):
+    p(chaine2[i]) # On affiche le caractère à chaque tour de boucle (si je le fait avec p() cela m'affihera les tuples)
+    i += 1
+
+# ------------------ Sélectionner une partie de la chaîne ------------------
+
+presentation = "hello :3"
+presentation[0:2] # On sélectionne les 2 premières lettres (le 0 est inclu mais le 2 est exclu)
+presentation[2:len(presentation)] #On sélectionne la 3ème lettre jusqu'a la fin 
