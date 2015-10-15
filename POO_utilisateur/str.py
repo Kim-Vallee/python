@@ -1,5 +1,8 @@
 #!/usr/bin/python3.4
-from __future__ import absolute_import
+
+import sys
+sys.path.insert(0, "/home/etilawin/Documents/python/intro")
+from modularites.print import *
 
 
 chaine = 'coucou mon frère'

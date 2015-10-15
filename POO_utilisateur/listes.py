@@ -1,7 +1,8 @@
 #!/usr/bin/python3.4
 
-def p(*args):
-    print(args)
+import sys
+sys.path.insert(0, "/home/etilawin/Documents/python/intro")
+from modularites.print import *
 
 #créations de listes
 liste = list()
