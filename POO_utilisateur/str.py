@@ -1,6 +1,6 @@
 #!/usr/bin/python3.4
+from __future__ import absolute_import
 
-from modularites.print import *
 
 chaine = 'coucou mon frère'
 chaine.upper() #Met en majuscule
