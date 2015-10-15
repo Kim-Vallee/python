@@ -1,8 +1,6 @@
 #!/usr/bin/python3.4
 
-def p(*args):
-    print(*args)
-
+from modularites.print import *
 from math import sqrt as s
 import random as rand
 
