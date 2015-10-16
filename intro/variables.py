@@ -13,7 +13,9 @@ str2 = """ C'est
 sur
 plusieurs
 lignes """
-int2 += 3 # = 6
+int1 += 3 # = 6
 
-#Impossible d'utiliser les mots suivants:
+#Impossible to use these words
 '''and del from none true as elif global nonlocal try assert else if not while break except import or with class false in pass yield continue finally is raise def for lambda return'''
+
+del int1

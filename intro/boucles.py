@@ -30,3 +30,8 @@ while x < 20:
     else:
         x += 1
         p(x)
+
+
+ma_liste = ['coucou', 'Ma bite', 'Mes bites']
+for i, elt in enumerate(ma_liste):
+   print("À l'indice {} se trouve {}.".format(i, elt)) #Creates tuples: as lists but not editable

@@ -8,3 +8,7 @@ from modularites.print import *
 liste = list()
 liste = []
 liste = [2 , 2.5, 'hello', []]
+
+liste.append(5) #Adding something at the end of the list
+liste.remove('hello')
+p(liste)
