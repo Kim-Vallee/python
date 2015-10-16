@@ -22,3 +22,11 @@ p(carre_de_5) #Now 25 appears so "print" != "return" (also "return" end the func
 
 ma_fonction_lambda = lambda nbr: nbr * 2
 p(ma_fonction_lambda(3))
+
+def args_unknown(arg1, arg2, *reste):
+    nbr = arg1 * arg2
+    p(nbr)
+    commentaire = list(reste)
+    p(commentaire)
+
+args_unknown(2, 3, 'hello', 'my name is bryan', 'ça marche!')
