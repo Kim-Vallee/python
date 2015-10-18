@@ -26,7 +26,30 @@ p(ma_fonction_lambda(3))
 def args_unknown(arg1, arg2, *reste):
     nbr = arg1 * arg2
     p(nbr)
-    commentaire = list(reste)
-    p(commentaire)
+    reste = list(reste)
+    p(reste)
 
 args_unknown(2, 3, 'hello', 'my name is bryan', 'ça marche!')
+
+
+
+def afficher(*parametres, sep=' ', fin='\n'):
+    """Fonction chargée de reproduire le comportement de print.
+    Elle doit finir par faire appel à print pour afficher le résultat.
+    Mais les paramètres devront déjà avoir été formatés.
+    On doit passer à print une unique chaîne, en lui spécifiant de ne rien mettre à la fin :
+    print(chaine, end='')"""
+    # args have tuple form
+    # So we need to convert them
+    parametres = list(parametres)
+    # Every value gets in str
+    for i, parametre in enumerate(parametres):
+        parametres[i] = str(parametre)
+    # Creating the final str
+    chaine = sep.join(parametres)
+    chaine += fin
+    print(chaine, end='')
+
+
+ma_liste = [45,56,34,67]
+print(*ma_liste) # Transform each value in arguments

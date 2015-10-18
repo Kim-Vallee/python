@@ -17,7 +17,11 @@ p(liste)
 tuple1 = (1,)
 tuple2 = (1,2,5)
 
-#Transform strings into lists
+#Transform strings into lists or in return
 string = 'Salut tout le monde !'
 StringInList = string.split(' ')
 ListInString = ",".join(StringInList)
+
+Ma_liste_test = [45, 43, 84, 8]
+Ma_liste_test = [st + 5 for st in Ma_liste_test] # Weird syntax but easy to understand
+print(*Ma_liste_test)
