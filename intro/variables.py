@@ -4,8 +4,8 @@ def p(*args):
     print(*args)
 
 #Deux variables différentes
-nom_de_la variable = 'valeur'
-Nom_De_La_Variable = 'valeur'
+name_of_the_var = 'valeur'
+Name_Of_The_Var = 'valeur'
 float1 = 3.5
 int1 = 3
 str1 = 'hello'

@@ -23,5 +23,6 @@ StringInList = string.split(' ')
 ListInString = ",".join(StringInList)
 
 Ma_liste_test = [45, 43, 84, 8]
-Ma_liste_test = [st + 5 for st in Ma_liste_test] # Weird syntax but easy to understand
+Ma_liste_test = [st + 5 for st in Ma_liste_test] # Weird syntax but easy to understand (simple way)
 print(*Ma_liste_test)
+Ma_liste_test = []

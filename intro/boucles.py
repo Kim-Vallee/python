@@ -9,15 +9,15 @@ while i <= nb:
     i += 1
 
 chaine = "Coucou"
-for lettre in chaine: #Lettre takes successively the value of each of the letters one by one
-    if lettre in "aeiouyAEIOUY": #Another use of "in" word
-        p(lettre)
+for letter in chaine: #letter takes successively the value of each of the letters one by one
+    if letter in "aeiouyAEIOUY": #Another use of "in" word
+        p(letter)
     else:
         p("*")
 
 while True:
-    sortir = input("Entrez Q pour sortir : ")
-    if sortir.lower() == "q":
+    leave = input("Entrez Q pour quitter : ")
+    if leave.lower() == "q":
         p("bye")
         break
 
@@ -32,6 +32,6 @@ while x < 20:
         p(x)
 
 
-ma_liste = ['coucou', 'Ma bite', 'Mes bites']
-for i, elt in enumerate(ma_liste):
+my_list = ['coucou', 'Ma bite', 'Mes bites']
+for i, elt in enumerate(my_list):
    print("À l'indice {} se trouve {}.".format(i, elt)) #Creates tuples: as lists but not editable

@@ -20,15 +20,15 @@ else:
     p("la variable n'est pas booleen")
 
 
-# Programme testant si une année, saisie par l'utilisateur, est bissextile ou non
+# Programm which tests if a year is leap or not
 
-annee = input("Saisissez une année : ")
-try: # Pour test si la personne aurait pas mis autre chose
-    annee = int(annee)
+year = input("Saisissez une année : ")
+try:
+    year = int(year)
 except:
     p('On a demandé un nombre!')
 else:
-    if annee % 400 == 0 or (annee % 4 == 0 and annee % 100 != 0):
+    if year % 400 == 0 or (year % 4 == 0 and year % 100 != 0):
         print("L'année saisie est bissextile.")
     else:
         print("L'année saisie n'est pas bissextile.")

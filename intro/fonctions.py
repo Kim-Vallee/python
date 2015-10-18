@@ -13,15 +13,15 @@ def division(nbr, multi = 2):
 #division(5, 4)
 #division(4)
 
-def carre(nbr):
+def square(nbr):
     return nbr * nbr
 
-carre(5) #Nothing happends
-carre_de_5 = carre(5)
-p(carre_de_5) #Now 25 appears so "print" != "return" (also "return" end the function proceedings)
+square(5) #Nothing happends
+square_5 = square(5)
+p(square_5) #Now 25 appears so "print" != "return" (also "return" end the function proceedings)
 
-ma_fonction_lambda = lambda nbr: nbr * 2
-p(ma_fonction_lambda(3))
+my_lambda_function = lambda nbr: nbr * 2
+p(my_lambda_function(3))
 
 def args_unknown(arg1, arg2, *reste):
     nbr = arg1 * arg2
@@ -33,11 +33,10 @@ args_unknown(2, 3, 'hello', 'my name is bryan', 'ça marche!')
 
 
 
-def afficher(*parametres, sep=' ', fin='\n'):
-    """Fonction chargée de reproduire le comportement de print.
-    Elle doit finir par faire appel à print pour afficher le résultat.
-    Mais les paramètres devront déjà avoir été formatés.
-    On doit passer à print une unique chaîne, en lui spécifiant de ne rien mettre à la fin :
+def stick_up(*parametres, sep=' ', fin='\n'):
+    """Function acting as print()
+    But args must have been formated
+    We must give print a simple str, and specify to end with nothing :
     print(chaine, end='')"""
     # args have tuple form
     # So we need to convert them
@@ -52,4 +51,4 @@ def afficher(*parametres, sep=' ', fin='\n'):
 
 
 ma_liste = [45,56,34,67]
-print(*ma_liste) # Transform each value in arguments
+print(*my_list) # Transform each value in arguments
