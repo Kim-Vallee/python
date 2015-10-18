@@ -1,7 +1,8 @@
 def afficher_flottant(flottant):
-    """Fonction prenant en paramètre un flottant et renvoyant une chaîne de caractères représentant la troncature de ce nombre. La partie flottante doit avoir une longueur maximum de 3 caractères.
-
-    De plus, on va remplacer le point décimal par la virgule"""
+    """Function taking as arg a float and which outputs
+    numerals representing the truncation of this number. The floatting part
+    must have a maximul length of 3 numerals.
+    Moreover, we will replace the decimal point by the comma"""
 
     if type(flottant) is not float:
         raise TypeError("Le paramètre attendu doit être un flottant")

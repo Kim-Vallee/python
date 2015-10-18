@@ -10,15 +10,15 @@ def division(nbr, multi = 2):
     """ Function that multiply any number by two if the 2nd arg has not been given """
     p(nbr / multi)
 
-#division(5, 4)
-#division(4)
+# Division(5, 4)
+# Division(4)
 
 def square(nbr):
     return nbr * nbr
 
-square(5) #Nothing happends
+square(5) # Nothing happends
 square_5 = square(5)
-p(square_5) #Now 25 appears so "print" != "return" (also "return" end the function proceedings)
+p(square_5) # Now 25 appears so "print" != "return" (also "return" end the function proceedings)
 
 my_lambda_function = lambda nbr: nbr * 2
 p(my_lambda_function(3))
@@ -38,7 +38,7 @@ def stick_up(*parametres, sep=' ', fin='\n'):
     But args must have been formated
     We must give print a simple str, and specify to end with nothing :
     print(chaine, end='')"""
-    # args have tuple form
+    # Args have tuple form
     # So we need to convert them
     parametres = list(parametres)
     # Every value gets in str
