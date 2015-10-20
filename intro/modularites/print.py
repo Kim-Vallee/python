@@ -2,6 +2,8 @@
 
 """ Module uniting some functions shortcuts, at the moment print() in p() """
 
-def p(*args):
-    """ replace print() by p() """
-    print(*args)
+# def p(*args):
+#     """ replace print() by p() """
+#     print(*args)
+
+p = print # Way faster than defining a new function
