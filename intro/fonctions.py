@@ -50,5 +50,12 @@ def stick_up(*parametres, sep=' ', fin='\n'):
     print(chaine, end='')
 
 
-ma_liste = [45,56,34,67]
+my_list = [45,56,34,67]
 print(*my_list) # Transform each value in arguments
+
+
+# What about fuction with unexistant named args?
+
+def dictionnary(**kwargs):
+    p("the different args given are {}".format(kwargs))
+dictionnary(name='my_name',nickname='Etilawin',other='other')
