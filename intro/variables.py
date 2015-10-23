@@ -3,7 +3,7 @@
 def p(*args):
     print(*args)
 
-#Deux variables différentes
+# Two different variables
 name_of_the_var = 'valeur'
 Name_Of_The_Var = 'valeur'
 float1 = 3.5
