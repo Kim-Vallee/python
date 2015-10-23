@@ -36,4 +36,4 @@ for values in dictionnary.values():
 for key,value in dictionnary.items():
     print('Votre {} est : {}'.format(key,value)) # Shows both keys and values
 
-# About dictionnaries in functions look in fonctions.py line 59-61
+# About dictionnaries in functions look in fonctions.py lines 59-61

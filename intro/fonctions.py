@@ -57,5 +57,18 @@ print(*my_list) # Transform each value in arguments
 # What about fuction with unexistant named args?
 
 def dictionnary(**kwargs):
+    """ Function that accepts unexistant named var
+    and transform them in a dictionnary """
     p("the different args given are {}".format(kwargs))
 dictionnary(name='my_name',nickname='Etilawin',other='other')
+
+global_variable = 9
+
+def add_1():
+    """ Add one to a global variable """
+    global global_variable # Put it just after the docstring mustn't
+                           # be used too much
+    global_variable += 1
+
+add_1()
+p(global_variable)
