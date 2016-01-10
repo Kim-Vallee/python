@@ -111,3 +111,22 @@ class ma_liste:
             return True
         else:
             return False
+
+class Time:
+    """Showing the time you want"""
+    def __init__(self,min=0,sec=0):
+        """defining..."""
+        self.min = min
+        self.sec = sec
+    def __str__(self):
+        """printing time"""
+        return('It\'s acctually {0:02}:{1:02}'.format(min,sec))
+    def __add__(self,newadd):
+        """Adding time"""
+        try:
+            int(newadd)
+        except:
+            print('Add a number please')
+            object.__add__(input('add? : '))
+        else:
+            self.sec += 
