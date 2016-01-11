@@ -1,5 +1,5 @@
 #!/usr/bin/python3.4
-#encoding : utf-8
+# encoding=utf-8
 class People:
     """ This class define a person by:
         - His first name
@@ -73,7 +73,6 @@ class Compteur:
     """Cette classe possède un attribut de classe qui s'incrémente à chaque
     fois que l'on crée un objet de ce type"""
 
-
     objets_crees = 0 # Le compteur vaut 0 au départ
     def __init__(self):
         """À chaque fois qu'on crée un objet, on incrémente le compteur"""
@@ -120,13 +119,19 @@ class Time:
         self.sec = sec
     def __str__(self):
         """printing time"""
-        return('It\'s acctually {0:02}:{1:02}'.format(min,sec))
+        return('It\'s acctually {0:02}:{1:02}'.format(self.min,self.sec))
     def __add__(self,newadd):
         """Adding time"""
-        try:
-            int(newadd)
-        except:
-            print('Add a number please')
-            object.__add__(input('add? : '))
+        new_duree = Time()
+
+        new_duree.min = self.min
+        new_duree.sec = self.sec
+
+        if type(newadd) == int:
+            new_duree.sec += newadd
+            if new_duree.sec >= 60:
+                new_duree.min = new_duree.sec // 60
+                new_duree.sec = new_duree.sec % 60
         else:
-            self.sec += 
+            print('Error, you must add a number if you want it to work')
+        return new_duree
