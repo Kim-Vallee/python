@@ -16,11 +16,13 @@ class People:
 
     def __repr__(self):
         """ What's in my object? """
-        return('First Name = {} \n Last Name = {} \n Age = {} \n living = {}'.format(self.Fname,self.Lname,self.age,self.living))
+        return('First Name = {} \n Last Name = {} \n Age = {} \n living = {}'\
+        .format(self.Fname,self.Lname,self.age,self.living))
 
     def __str__(self):
         """When ask to print it"""
-        return('Avec __str__ : \n First Name = {} \n Last Name = {} \n Age = {} \n living = {}'.format(self.Fname,self.Lname,self.age,self.living))
+        return('Avec __str__ : \n First Name = {} \n Last Name = {} \n Age = {}\
+         \n living = {}\n'.format(self.Fname,self.Lname,self.age,self.living))
 
     def __setattr__(self,attributeN,attributeV):
         """Method called when we change the value of an attribute"""
