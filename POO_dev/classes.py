@@ -120,13 +120,24 @@ class Time:
         self.sec = sec
     def __str__(self):
         """printing time"""
-        return('It\'s acctually {0:02}:{1:02}'.format(min,sec))
+        return('It\'s acctually {0:02}:{1:02}'.format(self.min,self.sec))
+    def __repr__(self):
+        """printing time"""
+        return('It\'s acctually {0:02}:{1:02}'.format(self.min,self.sec))
     def __add__(self,newadd):
         """Adding time"""
-        try:
-            int(newadd)
-        except:
-            print('Add a number please')
-            object.__add__(input('add? : '))
+        new_time = Time()
+
+        new_time.sec = self.sec
+        new_time.min = self.min
+
+        new_time.sec += newadd
+
+        if type(newadd) == int:
+            new_time.min = new_time.sec // 60
+            new_time.sec = new_time.sec % 60
+
         else:
-            self.sec += 
+            print('Veuillez entrer un nombre!')
+
+        return new_time
