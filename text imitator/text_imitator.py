@@ -1,4 +1,5 @@
 # coding: utf8
+"""Main file to run"""
 # On importe toute les données nécessaires
 from datas import *
 from functions import *
@@ -12,7 +13,7 @@ texte = str(sys.stdin.read(1000)) # sys.stdin.read()
 texte = supprime_accent(texte) # On supprime les accents
 longueur_texte = len(texte) # On récupère la longueur du texte
 
-liste_text = []
+liste_text = list()
 for ltrs in texte: # On transforme tout le texte en liste
     liste_text.append(ltrs)
 
@@ -28,5 +29,20 @@ while i < len(alphabet):
      + ' chance sur mille d\'apparaître')
     i += 1
 
-new_text_length = int(input('Please enter a length for the text to be created :\
- '))
+i = 0
+while i <len(alphabet):
+    print(alphabet[i])
+    temp_list = []
+    j = 0
+    while j < len(indices[i]):
+        try:
+            temp_list.append(liste_text[indices[i][j] + 1])
+        except IndexError:
+            pass
+        else:
+            j += 1
+    while
+    chance_after_letter[alphabet[i]] = []
+    i += 1
+# new_text_length = int(input('Please enter a length for the text to be created :\
+#  '))
