@@ -31,9 +31,10 @@ for ltrs in texte: # On transforme tout le texte en liste
 i = 0
 while i <len(alphabet):
     indices.append([j for j, x in enumerate(liste_text) if x == alphabet[i]])
-    print(alphabet[i])
     temp_list = []
     temp_list_chance = []
+    temp_last = 0
+
     j = 0
     while j < len(indices[i]):
         try:
@@ -42,17 +43,32 @@ while i <len(alphabet):
             pass
         finally:
             j += 1
+
     g = 0
     while g < len(alphabet):
-        try:
-            temp_list_chance.append(round((temp_list.count(alphabet[g])/len(temp_list))*100))
-        except ZeroDivisionError:
-            temp_list_chance.append(0)
-        finally:
-            g += 1
+        if (temp_list.count(alphabet[g])) != 0:
+            try:
+                percent = round((temp_list.count(alphabet[g])/len(temp_list))*100, 1)
+                if((percent + temp_last) > 100):
+                    percent = 100
+                    temp_last = 0
+                temp_list_chance.append([alphabet[g],percent + temp_last])
+                temp_last += round((temp_list.count(alphabet[g])/len(temp_list))*100)
+            except ZeroDivisionError:
+                pass
+        g += 1
+
     chance_after_letter[alphabet[i]] = temp_list_chance
     i += 1
 print(chance_after_letter)
+print('\n\n\n')
+print(chance_after_letter['f'])
 print(len(alphabet))
-# new_text_length = int(input('Please enter a length for the text to be created :\
-#  '))
+
+new_text_length = int(input('Please enter a length for the text to be created :\
+'))
+first_letter = alphabet[random.randrange(:25)]
+createdtxt += first_letter
+
+i = 0
+while i < new_text_length:

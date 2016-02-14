@@ -9,3 +9,5 @@ new_text = str()
 chance_after_letter = dict()
 temp_list = list()
 temp_list_chance = list()
+temp_last = 0
+createdtxt = str()
