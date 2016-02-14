@@ -7,38 +7,30 @@ from functions import *
 import sys
 import random
 
-print('Veuillez entrer un texte de 1000 charactères ou plus : ')
-texte = str(sys.stdin.read(1000)) # sys.stdin.read()
-                                # permet de copier tout
-                                # un texte.
+texte = notre_text(str(input('Voulez vous utiliser un de nos texte ? [y/n] : ')))
 texte = supprime_accent(texte) # On supprime les accents
 longueur_texte = len(texte) # On récupère la longueur du texte
 
-liste_text = list()
 for ltrs in texte: # On transforme tout le texte en liste
     liste_text.append(ltrs)
 
-# i = 0
-# while i < len(alphabet):
-#     # On récupère les positions (index) de la lettre alphabet[i]
-#     # On divise le nombres d'index obtenus par la longueur du texte puis on
-#     # Multiplie par mille pour obtenir un pourcentage (sur 1000 du coup)
-#     # pourcentage_lettre.append(round((len(indices[i]) / longueur_texte)*1000))
-#     # # Optionel: on affiche le résultat pour chaque lettre
-#     # print('Le charactère ' + str(alphabet[i]) + ' à '+str(pourcentage_lettre[i])\
-#     #  + ' chance sur mille d\'apparaître')
-#     i += 1
-
+# On récupère les chances d'avoir une lettre après une autre
 i = 0
-while i <len(alphabet):
+while i <len(alphabet): # On parcours tout l'alphabet
+    # On regarde où se situent les différents index de la lettre
     indices.append([j for j, x in enumerate(liste_text) if x == alphabet[i]])
+    # On reset les variables temporaires
     temp_list = []
     temp_list_chance = []
     temp_last = 0
 
     j = 0
+    # On fait tourner jusqu'à ce qu'il n'y ait plus de correspondance avec cette lettre
+    # Voir l.23
     while j < len(indices[i]):
+        # Try / except pour éviter les erreurs de dernier charactère
         try:
+            # On stock les lettres suivants la lettre alphabet[i] dans temp_list
             temp_list.append(liste_text[indices[i][j] + 1])
         except IndexError:
             pass
@@ -47,50 +39,31 @@ while i <len(alphabet):
 
     g = 0
     while g < len(alphabet):
-        if (temp_list.count(alphabet[g])) != 0:
+        if (temp_list.count(alphabet[g])) != 0: # On évite les zéros inutiles
+            # Try catch pour éviter la division par zero
             try:
-                percent = round((temp_list.count(alphabet[g])/len(temp_list))*100, 1)
+                # On compte le nombre de fois qu'il y a de lettre alphabet[g] après
+                # la lettre alphabet[i] et on le met en pourcentage
+                percent = round((temp_list.count(alphabet[g])/len(temp_list))*100)
+                # Pour éviter d'avoir un pourcentage supérieur à zero à cause des
+                # arrondis
                 if((percent + temp_last) > 100):
                     percent = 100
                     temp_last = 0
+                # On ajoute à une liste temporaire un tuple (ici sous forme de liste)
+                # qui servira à completer un dico
                 temp_list_chance.append([alphabet[g],percent + temp_last])
-                temp_last += round((temp_list.count(alphabet[g])/len(temp_list))*100)
+                # Pour des raisons de facilité d'aléatoire, la probabilité vaut
+                # la probabilité originiel + les probabilités précédentes
+                temp_last += percent
             except ZeroDivisionError:
                 pass
         g += 1
-
+    # On ajoute la liste temp_list_chance au dico qui vaut
+    # letter: [[following letter, percent][another following letter,another percent]]
     chance_after_letter[alphabet[i]] = temp_list_chance
     i += 1
-print(chance_after_letter)
-print('\n\n\n')
-print(chance_after_letter['f'])
-print(len(alphabet))
 
-new_text_length = int(input('Please enter a length for the text to be created :\
-'))
-first_letter = alphabet[random.randrange(0,25)]
-createdtxt += first_letter
-
-i = 0
-while i < new_text_length:
-    print(createdtxt)
-    temp_inf = chance_after_letter[createdtxt[i]]
-    temp_rand = random.randrange(0,100)
-    print(temp_rand)
-    j = 0
-    while j < len(chance_after_letter[createdtxt[i]]):
-        if chance_after_letter[createdtxt[i]][j] == chance_after_letter[createdtxt[i]][0]:
-            if temp_rand >= 0 and temp_rand \
-            <= chance_after_letter[createdtxt[i]][j+1][1]:
-                createdtxt += chance_after_letter[createdtxt[i]][j][0]
-                break
-            else:
-                j += 1
-                continue
-        elif temp_rand >= chance_after_letter[createdtxt[i]][j][1] and temp_rand \
-        <= chance_after_letter[createdtxt[i]][j+1][1]:
-            createdtxt += chance_after_letter[createdtxt[i]][j][0]
-            break
-        else:
-            j += 1
-    i += 1
+splitted_txt = texte.split()
+print(splitted_txt)
+print(splitted_txt[0][0])
