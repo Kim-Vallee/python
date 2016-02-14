@@ -1,7 +1,7 @@
 #!/usr/bin/python3.4
-# encoding=utf-8
+#encoding : utf-8
 class People:
-    """ This class defines a person by:
+    """ This class define a person by:
         - His first name
         - His last name
         - His age
@@ -16,11 +16,13 @@ class People:
 
     def __repr__(self):
         """ What's in my object? """
-        return('First Name = {} \n Last Name = {} \n Age = {} \n living = {}'.format(self.Fname,self.Lname,self.age,self.living))
+        return('First Name = {} \n Last Name = {} \n Age = {} \n living = {}'\
+        .format(self.Fname,self.Lname,self.age,self.living))
 
     def __str__(self):
         """When ask to print it"""
-        return('Avec __str__ : \n First Name = {} \n Last Name = {} \n Age = {} \n living = {}'.format(self.Fname,self.Lname,self.age,self.living))
+        return('Avec __str__ : \n First Name = {} \n Last Name = {} \n Age = {}\
+         \n living = {}\n'.format(self.Fname,self.Lname,self.age,self.living))
 
     def __setattr__(self,attributeN,attributeV):
         """Method called when we change the value of an attribute"""
@@ -73,6 +75,7 @@ class Compteur:
     """Cette classe possède un attribut de classe qui s'incrémente à chaque
     fois que l'on crée un objet de ce type"""
 
+
     objets_crees = 0 # Le compteur vaut 0 au départ
     def __init__(self):
         """À chaque fois qu'on crée un objet, on incrémente le compteur"""
@@ -120,18 +123,23 @@ class Time:
     def __str__(self):
         """printing time"""
         return('It\'s acctually {0:02}:{1:02}'.format(self.min,self.sec))
+    def __repr__(self):
+        """printing time"""
+        return('It\'s acctually {0:02}:{1:02}'.format(self.min,self.sec))
     def __add__(self,newadd):
         """Adding time"""
-        new_duree = Time()
+        new_time = Time()
 
-        new_duree.min = self.min
-        new_duree.sec = self.sec
+        new_time.sec = self.sec
+        new_time.min = self.min
+
+        new_time.sec += newadd
 
         if type(newadd) == int:
-            new_duree.sec += newadd
-            if new_duree.sec >= 60:
-                new_duree.min = new_duree.sec // 60
-                new_duree.sec = new_duree.sec % 60
+            new_time.min = new_time.sec // 60
+            new_time.sec = new_time.sec % 60
+
         else:
-            print('Error, you must add a number if you want it to work')
-        return new_duree
+            print('Veuillez entrer un nombre!')
+
+        return new_time
