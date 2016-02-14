@@ -1,7 +1,7 @@
 #!/usr/bin/python3.4
 # encoding=utf-8
 class People:
-    """ This class define a person by:
+    """ This class defines a person by:
         - His first name
         - His last name
         - His age
