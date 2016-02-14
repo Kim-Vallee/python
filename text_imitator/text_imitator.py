@@ -53,5 +53,6 @@ while i <len(alphabet):
     chance_after_letter[alphabet[i]] = temp_list_chance
     i += 1
 print(chance_after_letter)
+print(len(alphabet))
 # new_text_length = int(input('Please enter a length for the text to be created :\
 #  '))
