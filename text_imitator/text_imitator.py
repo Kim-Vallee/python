@@ -4,6 +4,7 @@
 # On importe toute les données nécessaires
 from datas import *
 from functions import *
+from classes import *
 import sys
 import random
 
@@ -16,7 +17,7 @@ for ltrs in texte: # On transforme tout le texte en liste
 
 # On récupère les chances d'avoir une lettre après une autre
 i = 0
-while i <len(alphabet): # On parcours tout l'alphabet
+while i < len(alphabet): # On parcours tout l'alphabet
     # On regarde où se situent les différents index de la lettre
     indices.append([j for j, x in enumerate(liste_text) if x == alphabet[i]])
     # On reset les variables temporaires
@@ -24,46 +25,45 @@ while i <len(alphabet): # On parcours tout l'alphabet
     temp_list_chance = []
     temp_last = 0
 
-    j = 0
-    # On fait tourner jusqu'à ce qu'il n'y ait plus de correspondance avec cette lettre
-    # Voir l.23
-    while j < len(indices[i]):
-        # Try / except pour éviter les erreurs de dernier charactère
-        try:
-            # On stock les lettres suivants la lettre alphabet[i] dans temp_list
-            temp_list.append(liste_text[indices[i][j] + 1])
-        except IndexError:
-            pass
-        finally:
-            j += 1
+    temp_list = get_after_letter(indices, temp_list, liste_text, i)
+    temp_list_chance = get_temp_list_chance(alphabet, temp_list)
 
-    g = 0
-    while g < len(alphabet):
-        if (temp_list.count(alphabet[g])) != 0: # On évite les zéros inutiles
-            # Try catch pour éviter la division par zero
-            try:
-                # On compte le nombre de fois qu'il y a de lettre alphabet[g] après
-                # la lettre alphabet[i] et on le met en pourcentage
-                percent = round((temp_list.count(alphabet[g])/len(temp_list))*100)
-                # Pour éviter d'avoir un pourcentage supérieur à zero à cause des
-                # arrondis
-                if((percent + temp_last) > 100):
-                    percent = 100
-                    temp_last = 0
-                # On ajoute à une liste temporaire un tuple (ici sous forme de liste)
-                # qui servira à completer un dico
-                temp_list_chance.append([alphabet[g],percent + temp_last])
-                # Pour des raisons de facilité d'aléatoire, la probabilité vaut
-                # la probabilité originiel + les probabilités précédentes
-                temp_last += percent
-            except ZeroDivisionError:
-                pass
-        g += 1
     # On ajoute la liste temp_list_chance au dico qui vaut
     # letter: [[following letter, percent][another following letter,another percent]]
-    chance_after_letter[alphabet[i]] = temp_list_chance
+    if temp_list_chance != []:
+        chance_after_letter[alphabet[i]] = temp_list_chance
+    i += 1
+splitted_txt = texte.split()
+amount_of_word = len(splitted_txt)
+
+
+chce_frst_ltr = get_chance_of_first_letter(alphabet, amount_of_word, splitted_txt)
+
+doubling_letter_chance = doubling_letter(amount_of_word, splitted_txt, alphabet,indices)
+
+# Getting shortest and longest word of the text:
+i = 0
+while i < len(splitted_txt):
+    if i == 0:
+        shortest_word = len(splitted_txt[i])
+        longest_word = len(splitted_txt[i])
+    if shortest_word > len(splitted_txt[i]):
+        shortest_word = len(splitted_txt[i])
+    if longest_word < len(splitted_txt[i]):
+        longest_word = len(splitted_txt[i])
     i += 1
 
-splitted_txt = texte.split()
-print(splitted_txt)
-print(splitted_txt[0][0])
+new_text_length = int(input('Veuillez entrer la taille du texte que vous voulez créer : '))
+texte_created = str()
+i = 0
+while i < new_text_length:
+    random_1 = random.randrange(100)
+    word = NewWord(shortest_word, longest_word, random_1, chce_frst_ltr)
+    texte_created += word.create_word(chance_after_letter, chce_frst_ltr, doubling_letter_chance) + ' '
+    i += 1
+print(texte_created)
+
+# print(chance_after_letter)
+# print(shortest_word)
+# print(longest_word)
+# print(texte_created)
