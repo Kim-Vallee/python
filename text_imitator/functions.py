@@ -6,8 +6,8 @@ import random
 def notre_text(answer):
     """ Function testing user's answer"""
     if answer.lower() == 'y':
-        texte1 = "The stacked magazines were seriously worn. The piles weren\'t\
-         neat, didn't seem to be arranged by year or subject matter. They weren\'t\
+        texte1 = "The stacked magazines were seriously worn. The piles weren't\
+         neat, didn't seem to be arranged by year or subject matter. They weren't\
          bound together, fastened to anything or stored in containers, which meant\
          sudden stops were potentially life-threatening. The cab was also full of\
          smoke, which I attributed to spontaneous mildew combustion, or a dropped\
@@ -15,8 +15,8 @@ def notre_text(answer):
          paper. Maybe the guy was deeply involved in bizarre barbecue hara-kiri \
          peep-show suicide."
     elif answer.lower() == 'n':
-        print('Veuillez entrer un texte de 200 charactères ou plus : ')
-        texte1 = str(sys.stdin.read(400)) # sys.stdin.read()
+        print('Veuillez entrer un texte de 1000 charactères ou plus : ')
+        texte1 = str(sys.stdin.read(1000)) # sys.stdin.read()
                                         # permet de copier tout
                                         # un texte.
     else:
@@ -42,12 +42,12 @@ def get_after_letter(indices, temp_list, liste_text, i):
     while j < len(indices[i]):
         # Try / except pour éviter les erreurs de dernier charactère
         try:
-            # On stock les lettres suivants la lettre alphabet[i] dans temp_list
-            temp_list.append(liste_text[indices[i][j] + 1])
+        # On stock les lettres suivants la lettre alphabet[i] dans temp_list
+            if (liste_text[indices[i][j] + 1] != ',' and liste_text[indices[i][j] + 1] != '.'):
+                temp_list.append(liste_text[indices[i][j] + 1])
         except IndexError:
             pass
-        finally:
-            j += 1
+        j += 1
     return temp_list
 
 def get_temp_list_chance(alphabet, temp_list):
@@ -100,6 +100,7 @@ def get_chance_of_first_letter(alphabet, amount_of_word, splitted_txt):
             /amount_of_word)*100 + temp_last])
             temp_last += temp_list.count(alphabet[i])/amount_of_word*100
         i += 1
+    chance_of_first_letter[-1][1] = 100
     return chance_of_first_letter
 
 def doubling_letter(amount_of_word, splitted_txt, alphabet,indices):

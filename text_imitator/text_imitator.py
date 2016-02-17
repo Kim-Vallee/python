@@ -41,29 +41,43 @@ chce_frst_ltr = get_chance_of_first_letter(alphabet, amount_of_word, splitted_tx
 
 doubling_letter_chance = doubling_letter(amount_of_word, splitted_txt, alphabet,indices)
 
-# Getting shortest and longest word of the text:
+# Getting shortest and longest word of the text + making mid-size:
+mid_size = int()
 i = 0
 while i < len(splitted_txt):
     if i == 0:
         shortest_word = len(splitted_txt[i])
         longest_word = len(splitted_txt[i])
-    if shortest_word > len(splitted_txt[i]):
+    elif shortest_word > len(splitted_txt[i]):
         shortest_word = len(splitted_txt[i])
-    if longest_word < len(splitted_txt[i]):
+    elif longest_word < len(splitted_txt[i]):
         longest_word = len(splitted_txt[i])
+    mid_size += len(splitted_txt)
     i += 1
+mid_size = mid_size / len(splitted_txt)
+list_shortests = list()
+list_longests = list()
+i = 0
+while i < len(splitted_txt):
+    if len(splitted_txt[i]) == shortest_word:
+        list_shortests.append(splitted_txt[i])
+    elif len(splitted_txt[i]) == longest_word:
+        list_longests.append(splitted_txt[i])
 
+    i += 1
 new_text_length = int(input('Veuillez entrer la taille du texte que vous voulez créer : '))
 texte_created = str()
 i = 0
 while i < new_text_length:
     random_1 = random.randrange(100)
-    word = NewWord(shortest_word, longest_word, random_1, chce_frst_ltr)
-    texte_created += word.create_word(chance_after_letter, chce_frst_ltr, doubling_letter_chance) + ' '
+    word = NewWord(shortest_word, longest_word, random_1, chce_frst_ltr, mid_size)
+    new_word = word.create_word(chance_after_letter, chce_frst_ltr, doubling_letter_chance, shortest_word, longest_word, list_longests, list_shortests)
+    if ' ' in new_word:
+        texte_created += new_word
+    else:
+        texte_created += new_word + ' '
     i += 1
+texte_created = texte_created.replace('  ', ' ')
+texte_created = texte_created.replace('   ', ' ')
+texte_created = texte_created.replace('    ', ' ')
 print(texte_created)
-
-# print(chance_after_letter)
-# print(shortest_word)
-# print(longest_word)
-# print(texte_created)
