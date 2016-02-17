@@ -5,6 +5,7 @@ import random
 """File where all the functions are stocked"""
 def notre_text(answer):
     """ Function testing user's answer"""
+    texte1 = str()
     if answer.lower() == 'y':
         texte1 = "The stacked magazines were seriously worn. The piles weren't\
          neat, didn't seem to be arranged by year or subject matter. They weren't\
@@ -17,8 +18,7 @@ def notre_text(answer):
     elif answer.lower() == 'n':
         print('Veuillez entrer un texte de 1000 charactères ou plus : ')
         texte1 = str(sys.stdin.read(1000)) # sys.stdin.read()
-                                        # permet de copier tout
-                                        # un texte.
+                                        # permet de copier tout                                        # un texte.
     else:
         notre_text(str(input('Veuillez répondre par y/n : ')))
     return str(texte1)
@@ -26,12 +26,13 @@ def notre_text(answer):
 def supprime_accent(texte):
     """ supprime les accents du texte source """
     texte = texte.lower()
-    accent = ['é', 'è', 'ê', 'à', 'ù', 'û', 'ç', 'ô', 'î', 'ï', 'â']
-    sans_accent = ['e', 'e', 'e', 'a', 'u', 'u', 'c', 'o', 'i', 'i', 'a']
+    accent = ['é', 'è', 'ê', 'à', 'ù', 'û', 'ü', 'ç', 'ô', 'ö', 'î', 'ï', 'â', 'ß']
+    sans_accent = ['e', 'e', 'e', 'a', 'u', 'u', 'u', 'c', 'o', 'o', 'i', 'i', 'a', 'ss']
     i = 0
     while i < len(accent):
         texte = texte.replace(accent[i], sans_accent[i])
         i += 1
+    texte = texte.replace("'",' ')
     return texte
 
 def get_after_letter(indices, temp_list, liste_text, i):
@@ -50,38 +51,38 @@ def get_after_letter(indices, temp_list, liste_text, i):
         j += 1
     return temp_list
 
-def get_temp_list_chance(alphabet, temp_list):
-    """ Updating temp list chance"""
-    temp_last = 0
-    temp_list_chance = list()
-    g = 0
-    while g < len(alphabet):
-        if (temp_list.count(alphabet[g])) != 0: # On évite les zéros inutiles
-            # Try catch pour éviter la division par zero
-            try:
-                # On compte le nombre de fois qu'il y a de lettre alphabet[g] après
-                # la lettre alphabet[i] et on le met en pourcentage
-                percent = round((temp_list.count(alphabet[g])/len(temp_list))*100)
-                # Pour éviter d'avoir un pourcentage supérieur à zero à cause des
-                # arrondis
-                if((percent + temp_last) > 100):
-                    percent = 100
-                    temp_last = 0
-                # On ajoute à une liste temporaire un tuple (ici sous forme de liste)
-                # qui servira à completer un dico
-                temp_list_chance.append([alphabet[g],percent + temp_last])
-                # Pour des raisons de facilité d'aléatoire, la probabilité vaut
-                # la probabilité originiel + les probabilités précédentes
-                temp_last += percent
-            except ZeroDivisionError:
-                pass
-        g += 1
-    try:
-        if temp_list_chance[-1][1] != 100:
-            temp_list_chance[-1][1] = 100
-    except IndexError:
-        pass
-    return temp_list_chance
+# def get_temp_list_chance(alphabet, temp_list):
+#     """ Updating temp list chance"""
+#     temp_last = 0
+#     temp_list_chance = list()
+#     g = 0
+#     while g < len(alphabet):
+#         if (temp_list.count(alphabet[g])) != 0: # On évite les zéros inutiles
+#             # Try catch pour éviter la division par zero
+#             try:
+#                 # On compte le nombre de fois qu'il y a de lettre alphabet[g] après
+#                 # la lettre alphabet[i] et on le met en pourcentage
+#                 percent = round((temp_list.count(alphabet[g])/len(temp_list))*100)
+#                 # Pour éviter d'avoir un pourcentage supérieur à zero à cause des
+#                 # arrondis
+#                 if((percent + temp_last) > 100):
+#                     percent = 100
+#                     temp_last = 0
+#                 # On ajoute à une liste temporaire un tuple (ici sous forme de liste)
+#                 # qui servira à completer un dico
+#                 temp_list_chance.append([alphabet[g],percent + temp_last])
+#                 # Pour des raisons de facilité d'aléatoire, la probabilité vaut
+#                 # la probabilité originiel + les probabilités précédentes
+#                 temp_last += percent
+#             except ZeroDivisionError:
+#                 pass
+#         g += 1
+#     try:
+#         if temp_list_chance[-1][1] != 100:
+#             temp_list_chance[-1][1] = 100
+#     except IndexError:
+#         pass
+#     return temp_list_chance
 
 def get_chance_of_first_letter(alphabet, amount_of_word, splitted_txt):
     """ Getting the chance of a first letter of a word """
@@ -100,6 +101,7 @@ def get_chance_of_first_letter(alphabet, amount_of_word, splitted_txt):
             /amount_of_word)*100 + temp_last])
             temp_last += temp_list.count(alphabet[i])/amount_of_word*100
         i += 1
+    print(chance_of_first_letter)
     chance_of_first_letter[-1][1] = 100
     return chance_of_first_letter
 

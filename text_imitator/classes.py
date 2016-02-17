@@ -20,23 +20,31 @@ class NewWord():
         final_word += self.first_letter
         if self.size != shortest_word and self.size != longest_word:
             while i < (self.size - 1): # -1 cause of first letter
-                random_number = random.randrange(100)
-                g = 0
-                try:
-                    while g < len(chance_after_letter[final_word[i]]):
-                        if random_number <= chance_after_letter[final_word[i]][g][1]:
-                            final_word += chance_after_letter[final_word[i]][g][0]
-                            if(chance_after_letter[final_word[i]][g][0] in doubling_letter_chance) and (random.randrange(100) <= doubling_letter_chance[chance_after_letter[final_word[i]][g][0]]):
-                                final_word += chance_after_letter[final_word[i]][g][0]
-                                i += 1
-                            break
-                        g += 1
-                except KeyError:
-                    pass
+                random_number = random.randrange(len(chance_after_letter[final_word[i]]))
+                new_letter = chance_after_letter[final_word[i]][random_number]
+                if new_letter == ' ':
+                    final_word += new_letter
+                    self.size = len(final_word)
+                else:
+                    final_word += new_letter
                 i += 1
-        elif self.size == shortest_word:
+                # g = 0
+                # try:
+                    # while g < len(chance_after_letter[final_word[i]]):
+                    #     if random_number <= chance_after_letter[final_word[i]][g][1]:
+                    #         final_word += chance_after_letter[final_word[i]][g][0]
+                    #         if(chance_after_letter[final_word[i]][g][0] in doubling_letter_chance) and (random.randrange(100) <= doubling_letter_chance[chance_after_letter[final_word[i]][g][0]]):
+                    #             final_word += chance_after_letter[final_word[i]][g][0]
+                    #             i += 1
+                    #         break
+                    #     g += 1
+                #
+                # except KeyError:
+                #     pass
+        
+        if self.size <= shortest_word:
             final_word = list_shortests[random.randrange(len(list_shortests))]
-        elif self.size == longest_word:
+        elif self.size >= longest_word:
             final_word = list_longests[random.randrange(len(list_longests))]
         # final_word = final_word.replace(' ', '')
         return final_word

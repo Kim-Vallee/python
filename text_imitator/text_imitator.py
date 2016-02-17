@@ -26,12 +26,12 @@ while i < len(alphabet): # On parcours tout l'alphabet
     temp_last = 0
 
     temp_list = get_after_letter(indices, temp_list, liste_text, i)
-    temp_list_chance = get_temp_list_chance(alphabet, temp_list)
+    # temp_list_chance = get_temp_list_chance(alphabet, temp_list)
 
     # On ajoute la liste temp_list_chance au dico qui vaut
     # letter: [[following letter, percent][another following letter,another percent]]
-    if temp_list_chance != []:
-        chance_after_letter[alphabet[i]] = temp_list_chance
+    if temp_list != []:
+        chance_after_letter[alphabet[i]] = temp_list
     i += 1
 splitted_txt = texte.split()
 amount_of_word = len(splitted_txt)
@@ -77,7 +77,10 @@ while i < new_text_length:
     else:
         texte_created += new_word + ' '
     i += 1
-texte_created = texte_created.replace('  ', ' ')
-texte_created = texte_created.replace('   ', ' ')
-texte_created = texte_created.replace('    ', ' ')
+texte_created += '.'
+i = 6
+# while i > 1:
+#     space = ' '
+#     texte_created = texte_created.replace(space * i, ' ')
+#     i -= 1
 print(texte_created)
