@@ -16,8 +16,7 @@ def notre_text(answer):
          paper. Maybe the guy was deeply involved in bizarre barbecue hara-kiri \
          peep-show suicide."
     elif answer.lower() == 'n':
-        print('Veuillez entrer un texte de 1000 charactères ou plus : ')
-        texte1 = str(sys.stdin.read(1000)) # sys.stdin.read()
+        texte1 = str(input('Veuillez entrer un texte de 1000 charactères ou plus : ')) # sys.stdin.read()
                                         # permet de copier tout                                        # un texte.
     else:
         notre_text(str(input('Veuillez répondre par y/n : ')))
@@ -33,6 +32,7 @@ def supprime_accent(texte):
         texte = texte.replace(accent[i], sans_accent[i])
         i += 1
     texte = texte.replace("'",' ')
+    texte = texte.replace("\n",' ')
     return texte
 
 def get_after_letter(indices, temp_list, liste_text, i):
