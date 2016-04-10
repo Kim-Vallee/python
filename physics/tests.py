@@ -32,7 +32,7 @@ hb = h_v/2*math.pi
 # s = (g*t**2)/2
 #
 # print('The ball is actually {} meters height'.format(h-s))
-#
+
 # # Exercice 2 : How long before the object falls?
 # h = int(input('Please enter the height of the tour (in meters) : '))
 # t = math.sqrt(h/g*2)
