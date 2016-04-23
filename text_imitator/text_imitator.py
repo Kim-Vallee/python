@@ -1,5 +1,5 @@
 #!/usr/bin/python3.4
-# coding: utf8
+# -*- coding: utf-8 -*-
 """Main file to run"""
 # On importe toute les données nécessaires
 from datas import *
@@ -7,6 +7,15 @@ from functions import *
 from classes import *
 import sys
 import random
+from cx_Freeze import setup, Executable
+
+# On appelle la fonction setup
+setup(
+    name = "text_imitator",
+    version = "0.1",
+    description = "This programm make a text language imitation",
+    executables = [Executable("text_imitator.py")],
+)
 
 texte = notre_text(str(input('Voulez vous utiliser un de nos texte ? [y/n] : ')))
 texte = supprime_accent(texte) # On supprime les accents
